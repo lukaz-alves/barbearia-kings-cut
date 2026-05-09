@@ -1,0 +1,64 @@
+.dashboard-card {
+    min-height: 520px;
+    padding-bottom: 30px;
+}
+
+.menu-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.botao-dashboard {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    background-color: var(--cor-fundo);
+    color: var(--cor-fonte);
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+    transition: all 0.4s ease;
+}
+
+.botao-dashboard:hover {
+    background-color: var(--cor-fundo-botao);
+    color: black;
+    transform: scale(1.05);
+}
+
+.botao-dashboard.sair {
+    background-color: #8b1e1e;
+    color: white;
+}
+
+.botao-dashboard.sair:hover {
+    background-color: #b22222;
+    color: white;
+}
+
+/* LISTAR AGENDAMENTOS */
+.listar-card {
+    width: 95%;
+    max-width: 1100px;
+    min-height: 650px;
+    padding: 30px;
+}
+
+.acoes-listar {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.tabela-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+}
