@@ -14,7 +14,7 @@
     <div id="fundo-image">
         <main id="card">
             <div id="logo-image"></div>
-            <h1 id="titulo">Onde você é tratado como um REI <span class="material-symbols-outlined">crown</span></h1>
+            <h1 id="titulo">Onde você é tratado como REI <span class="material-symbols-outlined">crown</span></h1>
             <form method="post" action="recebe_login.php">
                 <div class="campo">
                     <span class="material-symbols-outlined">mail</span>
@@ -26,9 +26,9 @@
                 </div>
 
                 <button type="submit" name="acao" value="login">Entrar</button>
-                <p>Não possui conta?<a href="cadastro.php">Cadastre-se</a></p>
+                <p class="link">Não possui conta? <a href="cadastro.php">Cadastre-se</a></p>
 
-                <a href="esqueci.html" class="botao">
+                <a href="#" class="botao">
                     Esqueci a senha <span class="material-symbols-outlined">email</span>
                 </a>
             </form>

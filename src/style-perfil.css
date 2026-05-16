@@ -1,64 +1,51 @@
-.dashboard-card {
-    min-height: 520px;
-    padding-bottom: 30px;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
 }
 
-.menu-dashboard {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 80%;
-    margin: 0 auto;
+:root {
+    --cor-fonte: #B6A347;
+    --cor-fundo: #1C1C1A;
+    --cor-fundo-2: #cdcece;
+    --cor-fundo-botao: #9b9b9b;
 }
 
-.botao-dashboard {
-    display: block;
-    text-align: center;
-    padding: 12px;
+body {
     background-color: var(--cor-fundo);
-    color: var(--cor-fonte);
-    text-decoration: none;
-    border-radius: 25px;
-    font-size: 1.1em;
-    transition: all 0.4s ease;
+    color: var(--cor-fundo-2);
+    text-align: center;
 }
 
-.botao-dashboard:hover {
-    background-color: var(--cor-fundo-botao);
-    color: black;
-    transform: scale(1.05);
+nav {
+    background-color: black;
+    padding: 30px 0px;
 }
 
-.botao-dashboard.sair {
-    background-color: #8b1e1e;
-    color: white;
+nav > .logo {
+    border-radius: 50%;
+    width: 6rem;
 }
 
-.botao-dashboard.sair:hover {
-    background-color: #b22222;
-    color: white;
+nav > h1 {
+    font-size: 2.2rem;
 }
 
-/* LISTAR AGENDAMENTOS */
-.listar-card {
-    width: 95%;
-    max-width: 1100px;
-    min-height: 650px;
+p {
     padding: 30px;
+    margin-top: 30px;
 }
 
-.acoes-listar {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
+p > a {
+    color: var(--cor-fundo-2);
+    text-decoration: none;
+    font-size: 2rem;
 }
 
-.tabela-container {
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
+p > a:hover {
+    background-color: var(--cor-fonte);
+    color: var(--cor-fundo);
+    padding: 8px;
+    border-radius: 6px;
 }

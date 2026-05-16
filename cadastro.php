@@ -13,9 +13,7 @@
 <body>
     <div id="fundo-image">
         <main id="card" class="cadastro">
-            <div id="logo-image"></div>
-            <h1 id="titulo"> Crie sua conta <span class="material-symbols-outlined">content_cut</span>
-            </h1>
+            <h1 id="titulo"> Crie sua conta <span class="material-symbols-outlined">content_cut</span></h1>
             <form method="post" action="recebe_cadastro.php" onsubmit="return validarCadastro()">
                 <div class="campo">
                     <span class="material-symbols-outlined">person</span>
@@ -38,7 +36,7 @@
                     <input type="password" name="confirmar_senha" id="confirmar_senha" placeholder="Confirme sua senha" required>
                 </div>
                 <button type="submit">Cadastrar</button>
-                <p class="link-login">Já possui conta?<a href="login.php">Entrar</a>
+                <p class="link">Já possui conta? <a href="login.php">Entrar</a>
                 </p>
             </form>
         </main>

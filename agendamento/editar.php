@@ -24,18 +24,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $valor = $_POST['valor'];
 
     $sql = "UPDATE agendamentos
-            SET cliente = ?, servico = ?, data_agendada = ?, horario = ?, valor = ?
-            WHERE id = ?";
+        SET cliente = ?, servico = ?, data_agendada = ?, horario = ?, valor = ?
+        WHERE id = ? AND id_usuario = ?";
 
     $stmt = $conexao->prepare($sql);
+    
+    $id_usuario = $_SESSION['id_usuario'];
     $stmt->bind_param(
-        "ssssdi",
+        "ssssdii",
         $cliente,
         $servico,
         $data_agendada,
         $horario,
         $valor,
-        $id
+        $id,
+        $id_usuario
     );
 
     if ($stmt->execute()) {
@@ -48,9 +51,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Busca dados atuais
-$sql = "SELECT * FROM agendamentos WHERE id = ?";
+$id_usuario = $_SESSION['id_usuario'];
+
+$sql = "SELECT * FROM agendamentos
+        WHERE id = ? AND id_usuario = ?";
+
 $stmt = $conexao->prepare($sql);
-$stmt->bind_param("i", $id);
+$stmt->bind_param("ii", $id, $id_usuario);
 $stmt->execute();
 $resultado = $stmt->get_result();
 
@@ -66,22 +73,29 @@ $agendamento = $resultado->fetch_assoc();
 <head>
     <meta charset="UTF-8">
     <title>Editar Agendamento</title>
+    <link rel="stylesheet" href="../src/style-editar.css">
+    <style>
+        
+    </style>
 </head>
 <body>
 
-    <h1>Editar Agendamento</h1>
+    <nav>
+        <img class="logo" src="../src/images/logo.jpeg" alt="logo do perfil">
+        <h1>Editar Agendamento</h1>
+    </nav>
 
     <form method="post">
 
         <p>
             <label>Cliente:</label><br>
-            <input type="text" name="cliente"
+            <input class="caixinha" type="text" name="cliente"
                    value="<?php echo $agendamento['cliente']; ?>" required>
         </p>
 
         <p>
             <label>Serviço:</label><br>
-            <select name="servico" id="servico" onchange="atualizarValor()" required>
+            <select class="caixinha" name="servico" id="servico" onchange="atualizarValor()" required>
                 <option value="Cabelo"
                     <?php if ($agendamento['servico'] == 'Cabelo') echo 'selected'; ?>
                     data-valor="30.00">Cabelo</option>
@@ -98,27 +112,42 @@ $agendamento = $resultado->fetch_assoc();
 
         <p>
             <label>Data:</label><br>
-            <input type="date" name="data_agendada"
+            <input class="caixinha" type="date" name="data_agendada"
                    value="<?php echo $agendamento['data_agendada']; ?>" required>
         </p>
 
         <p>
             <label>Horário:</label><br>
-            <input type="time" name="horario"
-                   value="<?php echo substr($agendamento['horario'], 0, 5); ?>" required>
+            <select class="caixinha" name="horario" required>
+                <?php
+                $horarios = [
+                    "09:00", "10:00", "11:00", "12:00",
+                    "13:00", "14:00", "15:00", "16:00",
+                    "17:00", "18:00"
+                ];
+
+                foreach ($horarios as $hora) {
+                    $selected = (substr($agendamento['horario'], 0, 5) == $hora)
+                        ? "selected"
+                        : "";
+
+                    echo "<option value='$hora' $selected>$hora</option>";
+                }
+                ?>
+            </select>
         </p>
 
         <p>
             <label>Valor:</label><br>
-            <input type="text" name="valor" id="valor"
+            <input class="caixinha" type="text" name="valor" id="valor"
                    value="<?php echo $agendamento['valor']; ?>" readonly>
         </p>
 
-        <button type="submit">Salvar Alterações</button>
+        <button type="submit">Salvar alterações</button>
 
     </form>
 
-    <p><a href="listar.php">Voltar</a></p>
+    <p><a class="link" href="listar.php">Voltar ao agendamento</a></p>
 
     <script>
         function atualizarValor() {

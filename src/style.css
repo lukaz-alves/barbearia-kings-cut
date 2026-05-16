@@ -28,14 +28,12 @@ body {
 
 #card {
     background-color: white;
-    width: 500px;
-    min-height: 660px;
-    border-radius: 14px 14px 14px 14px;
+    width: 31.25rem;
+    height: auto;
+    border-radius: 14px;
     box-shadow: 8px 8px 30px var(--cor-fundo);
-}
-
-#card.cadastro {
-    height: 560px;
+    padding-bottom: 2rem; 
+    overflow: hidden; 
 }
 
 #titulo {
@@ -48,6 +46,15 @@ body {
     color: var(--cor-fonte);
 }
 
+#card.cadastro {
+    padding-top: 3rem; 
+}
+
+.cadastro > h1 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
 #card > #logo-image {
     background-image: url('images/logo-fundo.png');
     background-size: cover;
@@ -56,12 +63,6 @@ body {
     border-radius: 14px 14px 0px 0px;
     box-shadow: 0px 2px 8px var(--cor-fundo);
     margin-bottom: 22px;
-}
-
-#card.cadastro > #logo-image {
-    background-color: var(--cor-fundo);
-    background-image: url('images/logo-fundo-2.png');
-    height: 200px;
 }
 
 form > div.campo {
@@ -97,7 +98,7 @@ div.campo > input {
     outline: none;
 }
 
-form > button{
+form > button {
     display: block;
     font-size: 1.2em;
     width: 40%;
@@ -115,6 +116,23 @@ form > button:hover {
     background-color: var(--cor-fundo-botao);
     color: black;
     transform: scale(1.1);
+}
+
+form > p.link {
+    text-align: center;
+}
+
+form > p.link > a {
+    text-decoration: none;
+    color: #8a760a;
+    padding: 4px;
+    border-bottom: 1px solid transparent;
+    border-radius: 8px;
+    transition: all 0.5s ease;
+}
+
+form > p.link > a:hover {
+    text-decoration: underline;
 }
 
 form > a.botao {

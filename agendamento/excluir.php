@@ -15,9 +15,13 @@ if (!isset($_GET['id'])) {
 
 $id = intval($_GET['id']);
 
-$sql = "DELETE FROM agendamentos WHERE id = ?";
+$id_usuario = $_SESSION['id_usuario'];
+
+$sql = "DELETE FROM agendamentos
+        WHERE id = ? AND id_usuario = ?";
+
 $stmt = $conexao->prepare($sql);
-$stmt->bind_param("i", $id);
+$stmt->bind_param("ii", $id, $id_usuario);
 
 if ($stmt->execute()) {
     echo "<script>

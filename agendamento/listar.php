@@ -8,8 +8,17 @@ if (!isset($_SESSION['id_usuario'])) {
 
 include("../conexao.php");
 
-$sql = "SELECT * FROM agendamentos ORDER BY data_agendada, horario";
-$resultado = $conexao->query($sql);
+$id_usuario = $_SESSION['id_usuario'];
+
+$sql = "SELECT * FROM agendamentos
+        WHERE id_usuario = ?
+        ORDER BY data_agendada, horario";
+
+$stmt = $conexao->prepare($sql);
+$stmt->bind_param("i", $id_usuario);
+$stmt->execute();
+$resultado = $stmt->get_result();
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -17,43 +26,19 @@ $resultado = $conexao->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendamentos</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 30px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: center;
-        }
-
-        th {
-            background: #1C1C1A;
-            color: #B6A347;
-        }
-
-        a {
-            text-decoration: none;
-            margin: 0 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="../src/style-listar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <h1>Lista de Agendamentos</h1>
 
     <p>
-        <a href="cadastrar.php">Novo Agendamento</a> |
-        <a href="../dashboard.php">Voltar ao Painel</a>
+        <a class="link" href="cadastrar.php">Novo Agendamento</a> |
+        <a class="link" href="../dashboard.php">Voltar ao Painel</a>
     </p>
 
     <table>

@@ -1,0 +1,82 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+:root {
+    --cor-fonte: #B6A347;
+    --cor-fundo: #1C1C1A;
+    --cor-fundo-2: #cdcece;
+    --cor-fundo-botao: #9b9b9b;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-fundo-2);
+    text-align: center;
+}
+
+nav {
+    background-color: black;
+    padding: 30px 0px;
+}
+
+nav > .logo {
+    border-radius: 50%;
+    width: 6rem;
+}
+
+nav > h1 {
+    background-color: black;
+    padding: 12px 0px;
+}
+
+form {
+    margin-top: 30px;
+    font-size: 1.2rem;
+}
+
+form > p {
+    margin-top: 15px;
+}
+
+form > button {
+    display: block;
+    font-size: 1em;
+    width: 12%;
+    height: 36px;
+    background-color: var(--cor-fonte);
+    color: var(--cor-fundo);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 20px auto;
+    transition: all 0.5s ease;
+}
+
+form > button:hover {
+    background-color: var(--cor-fundo-botao);
+    color: black;
+    transform: scale(1.1);
+}
+
+.caixinha {
+    font-size: 1.1rem;
+    border-radius: 6px;
+    width: 14rem;
+    padding-left: 6px;
+}
+
+p > .link {
+    color: white;
+    font-size: 1.1rem;
+    text-decoration: none;
+    line-height: 25px;
+}
+
+p > .link:hover {
+    text-decoration: underline;
+    color: var(--cor-fonte);
+}
