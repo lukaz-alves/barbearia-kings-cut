@@ -14,7 +14,7 @@
     <div id="fundo-image">
         <main id="card">
             <div id="logo-image"></div>
-            <h1 id="titulo">Onde te tratamos como um REI <span class="material-symbols-outlined">crown</span></h1>
+            <h1 id="titulo">Onde você é tratado como um REI <span class="material-symbols-outlined">crown</span></h1>
             <form method="post" action="recebe_login.php">
                 <div class="campo">
                     <span class="material-symbols-outlined">mail</span>
