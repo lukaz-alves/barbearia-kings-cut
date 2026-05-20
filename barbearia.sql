@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 09/05/2026 às 19:26
+-- Tempo de geração: 20/05/2026 às 02:16
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -16,7 +16,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-
 
 --
 -- Banco de dados: `barbearia`
@@ -34,17 +33,20 @@ CREATE TABLE `agendamentos` (
   `servico` varchar(50) NOT NULL,
   `data_agendada` date NOT NULL,
   `horario` time NOT NULL,
-  `valor` decimal(10,2) NOT NULL
+  `valor` decimal(10,2) NOT NULL,
+  `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `agendamentos`
 --
 
-INSERT INTO `agendamentos` (`id`, `cliente`, `servico`, `data_agendada`, `horario`, `valor`) VALUES
-(2, 'ronaldo fenomeno', 'Barba', '2026-05-30', '17:40:00', 20.00),
-(3, 'ronaldinho gaucho', 'Cabelo', '2026-05-20', '20:20:00', 30.00),
-(4, 'ronaldinho gaucho', 'Cabelo e Barba', '2026-06-04', '10:00:00', 50.00);
+INSERT INTO `agendamentos` (`id`, `cliente`, `servico`, `data_agendada`, `horario`, `valor`, `id_usuario`) VALUES
+(6, 'ronaldo fenomeno', 'Barba', '2026-05-29', '09:00:00', 20.00, 1),
+(8, 'ronaldinho gaucho', 'Cabelo e Barba', '2026-05-12', '10:00:00', 50.00, 2),
+(10, 'Ronaldo', 'Cabelo e Barba', '2026-05-16', '18:00:00', 50.00, 1),
+(11, 'ronaldo fenomeno', 'Cabelo', '2026-05-20', '10:00:00', 30.00, 1),
+(12, 'ronaldo fenomeno', 'Cabelo', '2026-06-05', '14:00:00', 30.00, 1);
 
 -- --------------------------------------------------------
 
@@ -76,7 +78,8 @@ INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`) VALUES
 -- Índices de tabela `agendamentos`
 --
 ALTER TABLE `agendamentos`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_data_horario` (`data_agendada`,`horario`);
 
 --
 -- Índices de tabela `usuarios`
@@ -93,7 +96,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `agendamentos`
 --
 ALTER TABLE `agendamentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
